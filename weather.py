@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import aiohttp
-import asyncio
 from typing import Any, Dict, Optional
+from aiohttp import ClientSession as Session
 
 
 class WeatherInfo():
@@ -18,7 +17,7 @@ class Weather():
         self.base_url: str = "http://api.openweathermap.org/data/2.5/weather"
 
   
-    async def fetch(self, session: aiohttp.ClientSession, params: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    async def fetch(self, session: Session, params: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         async with session.get(self.base_url, params=params) as response:
           
             if response.status == 200:
@@ -27,7 +26,7 @@ class Weather():
             return None
 
   
-    async def get_weather(self, session: aiohttp.ClientSession, location: str) -> WeatherInfo:
+    async def get_weather(self, session: Session, location: str) -> WeatherInfo:
         params = {
             'q': location,
             'appid': self.api_key,
