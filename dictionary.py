@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import aiohttp, asyncio
 from typing import Any, Dict, List, Optional
-
+from aiohttp import ClientSession as Session
 
 class Definition:
     def __init__(self, name: str, meaning: str, brief: str) -> None:
@@ -15,7 +14,7 @@ class Dictionary():
 
   
     @staticmethod
-    async def fetch(session: aiohttp.ClientSession, url: str) -> Optional[List[Dict[str, Any]]]:
+    async def fetch(session: Session, url: str) -> Optional[List[Dict[str, Any]]]:
         async with session.get(url) as response:
             if response.status == 200:
                 return await response.json()
@@ -23,7 +22,7 @@ class Dictionary():
 
   
     @staticmethod
-    async def define(session: aiohttp.ClientSession, word: str) -> Definition:
+    async def define(session: Session, word: str) -> Definition:
         url: str = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
         definition_data = await Dictionary.fetch(session, url)
         
