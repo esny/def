@@ -5,14 +5,14 @@ import asyncio
 from typing import Any, Dict, Optional
 
 
-class WeatherInfo:
+class WeatherInfo():
     def __init__(self, location: str, temperature: str, description: str) -> None:
         self.location: str = location
         self.temperature: str = temperature
         self.description: str = description
 
 
-class Weather:
+class Weather():
     def __init__(self, api_key: str) -> None:
         self.api_key: str = api_key
         self.base_url: str = "http://api.openweathermap.org/data/2.5/weather"
