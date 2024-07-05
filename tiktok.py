@@ -4,7 +4,7 @@ import requests
 from typing import Dict, Any, List
 
 
-class Tiktok(:
+class Tiktok():
     base_url = 'https://api.tiktok.com/'
 
     def __init__(self, user_agent: str = None) -> None:
