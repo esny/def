@@ -4,7 +4,7 @@ import requests
 from typing import Dict, Any, List
 
 
-class Instagram:
+class Instagram():
     base_url = 'https://graph.instagram.com/v12.0/'
 
     def __init__(self, access_token: str) -> None:
